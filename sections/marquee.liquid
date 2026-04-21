@@ -1,0 +1,33 @@
+<div class="marquee-container" style="background-color: var(--color-bg); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+  <div class="marquee-content" style="display: inline-block; animation: marquee 15s linear infinite; font-family: var(--font-heading); font-size: 3rem; color: var(--color-text-secondary); white-space: nowrap;">
+    {% for i in (1..5) %}
+      <span style="margin-right: 50px;">{{ section.settings.text }}</span>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Marquee",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Marquee Text",
+      "default": "Categoría 1 • Categoría 2 • Categoría 3"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Marquee"
+    }
+  ]
+}
+{% endschema %}

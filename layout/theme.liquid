@@ -1,0 +1,126 @@
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+
+    <title>
+      {{ page_title }}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {{ content_for_header }}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+
+    {{ 'theme.css' | asset_url | stylesheet_tag }}
+  </head>
+
+  <body class="template-{{ template.name }}{% if template.suffix %}-{{ template.suffix }}{% endif %}">
+
+    <a class="skip-link visually-hidden" href="#MainContent">Skip to content</a>
+
+    {% sections 'header-group' %}
+
+    <main id="MainContent" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    {% sections 'footer-group' %}
+
+    <!-- Search Overlay -->
+    <div id="search-overlay" class="search-overlay" aria-hidden="true">
+      <div class="search-overlay__backdrop" id="search-backdrop"></div>
+      <div class="search-overlay__panel">
+        <button class="search-overlay__close" id="close-search" aria-label="Cerrar búsqueda">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <form action="{{ routes.search_url }}" method="get" role="search" class="search-overlay__form">
+          <input type="search" name="q" placeholder="Buscar productos..." class="search-overlay__input" autocomplete="off" id="search-input">
+          <input type="hidden" name="type" value="product">
+          <button type="submit" class="search-overlay__submit" aria-label="Buscar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Drawer -->
+    <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+      <div class="mobile-menu__backdrop" id="mobile-menu-backdrop"></div>
+      <nav class="mobile-menu__drawer">
+        <div class="mobile-menu__header">
+          <a href="{{ routes.root_url }}" class="mobile-menu__logo">{{ shop.name }}</a>
+          <button class="mobile-menu__close" id="close-mobile-menu" aria-label="Cerrar menú">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+        <ul class="mobile-menu__list">
+          {% for link in linklists.main-menu.links %}
+            <li class="mobile-menu__item">
+              <a href="{{ link.url }}" class="mobile-menu__link">{{ link.title }}</a>
+              {% if link.links != blank %}
+                <ul class="mobile-menu__sub-list">
+                  {% for sub in link.links %}
+                    <li><a href="{{ sub.url }}" class="mobile-menu__sub-link">{{ sub.title }}</a></li>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+        <div class="mobile-menu__footer">
+          {% if customer %}
+            <a href="{{ routes.account_url }}" class="mobile-menu__account-link">Mi Cuenta</a>
+            <a href="{{ routes.account_logout_url }}" class="mobile-menu__account-link">Cerrar Sesión</a>
+          {% else %}
+            <a href="{{ routes.account_login_url }}" class="mobile-menu__account-link">Iniciar Sesión</a>
+          {% endif %}
+        </div>
+      </nav>
+    </div>
+
+    <!-- Mini Cart Drawer -->
+    <div id="mini-cart" class="mini-cart" aria-hidden="true">
+      <div class="mini-cart__backdrop" id="mini-cart-backdrop"></div>
+      <div class="mini-cart__drawer">
+        <div class="mini-cart__header">
+          <h2 class="mini-cart__title">Tu Carrito</h2>
+          <button class="mini-cart__close" id="close-mini-cart" aria-label="Cerrar carrito">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+        <div class="mini-cart__body" id="mini-cart-body">
+          <div class="mini-cart__empty">
+            <p>Tu carrito está vacío.</p>
+            <a href="{{ routes.all_products_collection_url }}" class="btn btn--primary">Ver Productos</a>
+          </div>
+        </div>
+        <div class="mini-cart__footer" id="mini-cart-footer" style="display:none">
+          <div class="mini-cart__subtotal">
+            <span>Subtotal</span>
+            <span id="mini-cart-total">{{ cart.total_price | money }}</span>
+          </div>
+          <a href="{{ routes.cart_url }}" class="btn btn--outline btn--full">Ver Carrito</a>
+          <a href="{{ routes.checkout_url }}" class="btn btn--primary btn--full">Continuar al Envío</a>
+        </div>
+      </div>
+    </div>
+
+    <script src="{{ 'theme.js' | asset_url }}" defer></script>
+  </body>
+</html>

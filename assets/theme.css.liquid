@@ -1,0 +1,115 @@
+/* The Inner Balance Theme CSS */
+:root {
+  --color-bg: {{ settings.color_background }};
+  --color-text: {{ settings.color_foreground }};
+  --color-text-secondary: {{ settings.color_secondary_text }};
+  --color-button-bg: {{ settings.color_button_bg }};
+  --color-button-text: {{ settings.color_button_text }};
+  --color-border: {{ settings.color_border }};
+  --color-announcement-bg: {{ settings.color_announcement_bg }};
+  --color-announcement-text: {{ settings.color_announcement_text }};
+  
+  --font-heading: {{ settings.heading_font }};
+  --font-body: 'Inter', sans-serif;
+  
+  --base-size: {{ settings.base_font_size }}px;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--base-size);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  margin-top: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  font-family: var(--font-body);
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn--primary {
+  background-color: var(--color-button-bg);
+  color: var(--color-button-text);
+}
+
+.btn--primary:hover {
+  opacity: 0.9;
+}
+
+.btn--outline {
+  background-color: transparent;
+  color: var(--color-button-bg);
+  border: 1px solid var(--color-button-bg);
+}
+
+.btn--full {
+  width: 100%;
+}
+
+/* Header */
+.header {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Image Banner / Hero */
+.hero {
+  position: relative;
+  text-align: center;
+  padding: 60px 20px;
+  background-color: var(--color-bg);
+}
+.hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+/* Marquee */
+.marquee-container {
+  background: var(--color-button-bg);
+  color: var(--color-button-text);
+  padding: 10px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Footer */
+.footer {
+  padding: 40px 20px;
+  text-align: center;
+  border-top: 1px solid var(--color-border);
+  font-size: 0.9rem;
+}

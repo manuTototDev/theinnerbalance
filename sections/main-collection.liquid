@@ -1,0 +1,30 @@
+<div style="padding: 40px 20px;">
+  <h1 style="text-align: center; margin-bottom: 40px;">{{ collection.title }}</h1>
+  
+  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto;">
+    {% for product in collection.products %}
+      <div style="text-align: center;">
+        <a href="{{ product.url }}">
+          <div style="background: #f4f4f4; padding: 20px; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; margin-bottom: 15px;">
+            {% if product.featured_image %}
+              <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" style="max-width: 100%; max-height: 100%;">
+            {% else %}
+              Product Image
+            {% endif %}
+          </div>
+          <h3 style="font-size: 1rem; margin: 0 0 10px;">{{ product.title }}</h3>
+          <div style="font-weight: bold;">{{ product.price | money }}</div>
+        </a>
+      </div>
+    {% else %}
+      <p style="grid-column: 1 / -1; text-align: center;">No hay productos en esta categoría.</p>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection grid",
+  "settings": []
+}
+{% endschema %}

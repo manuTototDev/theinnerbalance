@@ -1,0 +1,122 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "The Inner Balance (Wireframe)",
+    "theme_version": "1.0.0",
+    "theme_author": "Custom",
+    "theme_documentation_url": "",
+    "theme_support_url": ""
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Background",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "color_foreground",
+        "label": "Text",
+        "default": "#333333"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary_text",
+        "label": "Secondary Text",
+        "default": "#666666"
+      },
+      {
+        "type": "color",
+        "id": "color_button_bg",
+        "label": "Button Background",
+        "default": "#333333"
+      },
+      {
+        "type": "color",
+        "id": "color_button_text",
+        "label": "Button Text",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "color_border",
+        "label": "Border",
+        "default": "#CCCCCC"
+      },
+      {
+        "type": "color",
+        "id": "color_announcement_bg",
+        "label": "Announcement Background",
+        "default": "#EEEEEE"
+      },
+      {
+        "type": "color",
+        "id": "color_announcement_text",
+        "label": "Announcement Text",
+        "default": "#333333"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "select",
+        "id": "heading_font",
+        "label": "Heading Font",
+        "options": [
+          { "value": "'Inter', sans-serif", "label": "Inter (Wireframe)" }
+        ],
+        "default": "'Inter', sans-serif"
+      },
+      {
+        "type": "range",
+        "id": "base_font_size",
+        "label": "Base font size",
+        "min": 14,
+        "max": 18,
+        "step": 1,
+        "unit": "px",
+        "default": 16
+      }
+    ]
+  },
+  {
+    "name": "Favicon",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon image"
+      }
+    ]
+  },
+  {
+    "name": "Social Media",
+    "settings": [
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "Instagram URL"
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_type",
+        "label": "Cart Type",
+        "options": [
+          { "value": "drawer", "label": "Drawer (slide-in)" },
+          { "value": "page", "label": "Cart Page" }
+        ],
+        "default": "drawer"
+      }
+    ]
+  }
+]

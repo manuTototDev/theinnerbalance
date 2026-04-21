@@ -1,0 +1,76 @@
+<div class="about-page" style="padding: 60px 20px; max-width: 800px; margin: 0 auto; color: var(--color-text);">
+  <h1 style="text-align: center; margin-bottom: 50px; font-size: 2.5rem;">{{ page.title | default: 'About Us Wireframe' }}</h1>
+
+  <div class="about-section" style="margin-bottom: 60px; border: 1px solid var(--color-border); padding: 30px; border-radius: 4px; background: #FFFFFF;">
+    <h2 style="font-size: 1.8rem; margin-bottom: 20px; border-bottom: 1px solid var(--color-border); padding-bottom: 10px;">{{ section.settings.heading_1 }}</h2>
+    <div style="line-height: 1.8; color: var(--color-text-secondary); font-size: 1.1rem;">
+      {{ section.settings.content_1 }}
+    </div>
+    <div style="margin-top: 20px; height: 150px; background: #EEEEEE; border: 1px solid #CCCCCC; display: flex; align-items: center; justify-content: center; color: #999;">
+      Placeholder Image / Box
+    </div>
+  </div>
+
+  <div class="about-section" style="margin-bottom: 60px; border: 1px solid var(--color-border); padding: 30px; border-radius: 4px; background: #FFFFFF;">
+    <h2 style="font-size: 1.8rem; margin-bottom: 20px; border-bottom: 1px solid var(--color-border); padding-bottom: 10px;">{{ section.settings.heading_2 }}</h2>
+    <div style="line-height: 1.8; color: var(--color-text-secondary); font-size: 1.1rem;">
+      {{ section.settings.content_2 }}
+    </div>
+  </div>
+
+  <div class="about-section" style="margin-bottom: 60px; border: 1px solid var(--color-border); padding: 30px; border-radius: 4px; background: #FFFFFF;">
+    <h2 style="font-size: 1.8rem; margin-bottom: 20px; border-bottom: 1px solid var(--color-border); padding-bottom: 10px;">{{ section.settings.heading_3 }}</h2>
+    <div style="line-height: 1.8; color: var(--color-text-secondary); font-size: 1.1rem;">
+      {{ section.settings.content_3 }}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "About Us Content",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading_1",
+      "label": "Section 1 Heading",
+      "default": "Section 1: About Us"
+    },
+    {
+      "type": "richtext",
+      "id": "content_1",
+      "label": "Section 1 Content",
+      "default": "<p>Content block placeholder for section 1.</p>"
+    },
+    {
+      "type": "text",
+      "id": "heading_2",
+      "label": "Section 2 Heading",
+      "default": "Section 2: Mission"
+    },
+    {
+      "type": "richtext",
+      "id": "content_2",
+      "label": "Section 2 Content",
+      "default": "<p>Content block placeholder for section 2.</p>"
+    },
+    {
+      "type": "text",
+      "id": "heading_3",
+      "label": "Section 3 Heading",
+      "default": "Section 3: Values"
+    },
+    {
+      "type": "richtext",
+      "id": "content_3",
+      "label": "Section 3 Content",
+      "default": "<p>Content block placeholder for section 3.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "About Us Content"
+    }
+  ]
+}
+{% endschema %}

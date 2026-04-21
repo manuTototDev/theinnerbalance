@@ -1,0 +1,26 @@
+<div class="announcement-bar" style="background-color: {{ settings.color_announcement_bg }}; color: {{ settings.color_announcement_text }}; text-align: center; padding: 10px; font-size: 0.9em;">
+  {%- if section.settings.text != blank -%}
+    {{ section.settings.text }}
+  {%- else -%}
+    Start with confidence: 10% off your first intimate care order
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Announcement Bar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Announcement text",
+      "default": "Start with confidence: 10% off your first intimate care order"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Announcement Bar"
+    }
+  ]
+}
+{% endschema %}

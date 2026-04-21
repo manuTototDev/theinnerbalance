@@ -1,0 +1,76 @@
+<div class="featured-collection" style="padding: 60px 20px;">
+  <h2 style="text-align: center; color: var(--color-text); font-size: 2.2rem; margin-bottom: 40px;">
+    {{ section.settings.title }}
+  </h2>
+
+  <div class="product-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+    {%- assign collection = collections[section.settings.collection] -%}
+    {%- if collection != blank -%}
+      {%- for product in collection.products limit: section.settings.products_to_show -%}
+        <div class="product-card" style="text-align: center; border: 1px solid var(--color-border); padding: 15px; border-radius: 4px;">
+          <a href="{{ product.url }}">
+            <div class="product-card__image" style="background-color: #EEEEEE; padding: 20px; position: relative; min-height: 250px; display: flex; align-items: center; justify-content: center;">
+              {% if product.featured_image %}
+                <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" style="max-width: 100%; height: auto;">
+              {% else %}
+                <span style="color: #999;">Image Placeholder</span>
+              {% endif %}
+              <button class="add-to-cart-quick" style="position: absolute; bottom: 10px; right: 10px; width: 40px; height: 40px; background: #333333; color: white; border: none; font-size: 1.5rem; cursor: pointer; border-radius: 4px;">+</button>
+            </div>
+            <h3 style="font-family: var(--font-body); font-weight: 500; font-size: 1rem; margin-top: 15px; color: var(--color-text);">
+              {{ product.title }}
+            </h3>
+            <div class="product-card__price" style="font-weight: bold; margin-top: 5px; color: var(--color-text-secondary);">
+              {{ product.price | money }}
+            </div>
+          </a>
+        </div>
+      {%- endfor -%}
+    {%- else -%}
+      <!-- Mock products if no collection selected -->
+      {% for i in (1..4) %}
+      <div class="product-card" style="text-align: center; border: 1px solid var(--color-border); padding: 15px; border-radius: 4px;">
+        <div class="product-card__image" style="background-color: #EEEEEE; padding: 20px; position: relative; min-height: 250px; display: flex; align-items: center; justify-content: center;">
+          <span style="color: #999;">Product Image</span>
+          <button class="add-to-cart-quick" style="position: absolute; bottom: 10px; right: 10px; width: 40px; height: 40px; background: #333333; color: white; border: none; font-size: 1.5rem; border-radius: 4px;">+</button>
+        </div>
+        <h3 style="font-family: var(--font-body); font-weight: 500; font-size: 1rem; margin-top: 15px; color: var(--color-text);">Product Name Wireframe</h3>
+        <div class="product-card__price" style="font-weight: bold; margin-top: 5px; color: var(--color-text-secondary);">$0.00</div>
+      </div>
+      {% endfor %}
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Featured Collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Products Catalog"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 4,
+      "label": "Maximum products to show"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Collection"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,28 @@
+{
+  "sections": {
+    "hero": {
+      "type": "image-banner",
+      "settings": {
+        "heading": "When body, mind and inner self are in perfect balance",
+        "subheading": "Evidence-based solutions for intimate care"
+      }
+    },
+    "marquee": {
+      "type": "marquee",
+      "settings": {
+        "text": "Hygiene + Anti-Ageing + Wellness + Balance"
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Our Solutions"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "marquee",
+    "featured_collection"
+  ]
+}

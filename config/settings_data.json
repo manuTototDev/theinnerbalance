@@ -1,0 +1,20 @@
+{
+  "current": {
+    "color_background": "#FFFFFF",
+    "color_foreground": "#333333",
+    "color_secondary_text": "#666666",
+    "color_button_bg": "#333333",
+    "color_button_text": "#FFFFFF",
+    "color_border": "#CCCCCC",
+    "color_announcement_bg": "#EEEEEE",
+    "color_announcement_text": "#333333",
+    "heading_font": "'Inter', sans-serif",
+    "base_font_size": 16,
+    "cart_type": "drawer",
+    "social_instagram_link": "",
+    "social_facebook_link": "",
+    "social_tiktok_link": "",
+    "whatsapp_number": "",
+    "whatsapp_message": "Hola! Tengo una consulta sobre este producto: "
+  }
+}

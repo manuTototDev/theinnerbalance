@@ -1,0 +1,42 @@
+<footer class="footer">
+  <div class="footer__content">
+    {% if section.settings.show_social %}
+    <div class="footer__social" style="margin-bottom: 20px;">
+      <p>Síguenos en redes</p>
+      <div style="display:flex; justify-content:center; gap: 10px;">
+        <!-- Social icons placeholders -->
+        <span style="width:30px; height:30px; background:#ddd; border-radius:50%; display:inline-block;"></span>
+        <span style="width:30px; height:30px; background:#ddd; border-radius:50%; display:inline-block;"></span>
+        <span style="width:30px; height:30px; background:#ddd; border-radius:50%; display:inline-block;"></span>
+      </div>
+    </div>
+    {% endif %}
+
+    <div class="footer__links">
+      <p><strong>Información o Ayuda</strong></p>
+      <ul style="list-style:none; padding:0; line-height: 2;">
+        <li><a href="#">Contáctanos</a></li>
+        <li><a href="#">Preguntas Frecuentes</a></li>
+        <li><a href="#">Términos y Condiciones</a></li>
+        <li><a href="#">Política de Privacidad</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer__copyright" style="margin-top: 30px; font-size: 0.8em; color: var(--color-text-secondary);">
+    &copy; {{ 'now' | date: "%Y" }} {{ shop.name }}. Todos los derechos reservados.
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_social",
+      "label": "Show social icons",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,21 @@
+{
+  "name": "Header group",
+  "type": "header",
+  "sections": {
+    "announcement_bar": {
+      "type": "announcement-bar",
+      "settings": {
+        "text": "Start with confidence: 10% off your first intimate care order — gentle, effective, essential."
+      }
+    },
+    "header": {
+      "type": "header",
+      "settings": {
+      }
+    }
+  },
+  "order": [
+    "announcement_bar",
+    "header"
+  ]
+}
