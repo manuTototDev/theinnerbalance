@@ -1,8 +1,13 @@
 <div class="learning-center-page" style="padding: 60px 20px; max-width: 900px; margin: 0 auto; color: var(--color-text);">
-  <h1 style="text-align: center; margin-bottom: 20px; font-size: 3rem;">{{ page.title | default: 'Learning Center' }}</h1>
-  <p style="text-align: center; font-size: 1.2rem; color: var(--color-text-secondary); margin-bottom: 60px; line-height: 1.6;">
-    El conocimiento es el primer paso hacia el bienestar. <br>Aquí encontrarás respuestas científicas a las preguntas más comunes sobre salud, rutinas y prevención íntima.
-  </p>
+  <h1 style="text-align: center; margin-bottom: 20px; font-size: 3rem;">Learning Center</h1>
+  
+  <div style="background: #FAFAFA; border: 1px solid var(--color-border); padding: 40px; border-radius: 4px; margin-bottom: 50px; text-align: center;">
+    <h2 style="font-size: 1.8rem; margin-bottom: 15px;">Tu cuerpo es un ecosistema inteligente</h2>
+    <p style="font-size: 1.15rem; color: var(--color-text-secondary); line-height: 1.8;">
+      El área vulvovaginal alberga una comunidad compleja de bacterias beneficiosas (Lactobacilos) que producen ácido láctico para mantener a raya las infecciones. Cuando usamos jabones corporales normales, duchas vaginales perfumadas o pasamos por cambios hormonales (como embarazo o menopausia), ese ecosistema se rompe.<br><br>
+      <strong>Aquí encontrarás todo lo necesario para educarte sobre prevención, hidratación y cómo mantener ese equilibrio vital intacto con rutinas respaldadas por la ciencia.</strong>
+    </p>
+  </div>
 
   <div class="faq-container">
     {% for block in section.blocks %}
@@ -106,6 +111,27 @@
           "settings": { 
             "question": "¿Qué ingredientes evitan y por qué?", 
             "answer": "<p>Nuestra filosofía es de transparencia radical. Hemos eliminado por completo de nuestras fórmulas: Sulfatos agresivos (como SLS o SLES que resecan), Parabenos (disruptores hormonales comprobados), Fragancias artificiales con alérgenos y Colorantes sintéticos. Solo usamos componentes activos biocompatibles y extractos botánicos que tu cuerpo reconoce y asimila.</p>" 
+          } 
+        },
+        { 
+          "type": "faq", 
+          "settings": { 
+            "question": "¿Qué son los prebióticos y por qué están en sus geles limpiadores?", 
+            "answer": "<p>Los prebióticos son esencialmente 'alimento' para las bacterias buenas (probióticos) que ya viven de forma natural en tu zona íntima. Al incluir prebióticos en nuestros limpiadores, ayudamos a fortalecer tus defensas naturales en lugar de simplemente 'lavar', asegurando que la microbiota buena prolifere y mantenga a los patógenos alejados.</p>" 
+          } 
+        },
+        { 
+          "type": "faq", 
+          "settings": { 
+            "question": "Siento sequedad constante, ¿es normal o debo preocuparme?", 
+            "answer": "<p>La sequedad es un síntoma extremadamente común pero frecuentemente ignorado. Puede ocurrir por estrés, uso de ropa ajustada, pastillas anticonceptivas, posparto o pre-menopausia. No debes normalizar la incomodidad. Iniciar un protocolo de hidratación (con nuestros serums ricos en ácido hialurónico) ayuda a reparar el tejido, devolver la lubricación natural y prevenir microlesiones.</p>" 
+          } 
+        },
+        { 
+          "type": "faq", 
+          "settings": { 
+            "question": "¿Puedo usar sus productos si tengo piel extremadamente sensible o tendencia a alergias?", 
+            "answer": "<p>Sí. Toda nuestra línea fue desarrollada bajo la premisa de la máxima tolerancia dermatológica. Utilizamos extractos botánicos calmantes (como aloe vera orgánico o caléndula) y evitamos perfumes sintéticos para reducir a cero el riesgo de reacciones alérgicas. Son ideales para uso diario en pieles reactivas.</p>" 
           } 
         }
       ]
