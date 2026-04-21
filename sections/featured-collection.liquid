@@ -1,21 +1,33 @@
-<div class="featured-collection" style="padding: 60px 20px;">
-  <h2 style="text-align: center; color: var(--color-text); font-size: 2.2rem; margin-bottom: 40px;">
-    {{ section.settings.title }}
-  </h2>
+<div class="featured-collection" style="padding: 60px 20px; overflow: hidden;">
+  <div style="text-align: center; max-width: 600px; margin: 0 auto 40px auto;">
+    <h2 style="color: var(--color-text); font-size: 2.2rem; margin-bottom: 15px;">
+      {{ section.settings.title }}
+    </h2>
+    <p style="color: var(--color-text-secondary); font-size: 1.1rem; line-height: 1.5;">
+      {{ section.settings.description }}
+    </p>
+  </div>
 
-  <div class="product-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+  <div class="product-carousel" id="carousel-{{ section.id }}" style="display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; gap: 20px; padding-bottom: 20px; -ms-overflow-style: none; scrollbar-width: none;">
+    <style>
+      #carousel-{{ section.id }}::-webkit-scrollbar { display: none; }
+      .carousel-item { flex: 0 0 80%; max-width: 300px; scroll-snap-align: start; }
+      @media (min-width: 768px) { .carousel-item { flex: 0 0 calc(33.333% - 14px); } }
+      @media (min-width: 1024px) { .carousel-item { flex: 0 0 calc(25% - 15px); } }
+    </style>
+
     {%- assign collection = collections[section.settings.collection] -%}
-    {%- if collection != blank -%}
-      {%- for product in collection.products limit: section.settings.products_to_show -%}
-        <div class="product-card" style="text-align: center; border: 1px solid var(--color-border); padding: 15px; border-radius: 4px;">
-          <a href="{{ product.url }}">
+    {%- if collection != blank and collection.products.size > 0 -%}
+      {%- for product in collection.products -%}
+        <div class="carousel-item product-card" style="text-align: center; border: 1px solid var(--color-border); padding: 15px; border-radius: 4px;">
+          <a href="{{ product.url }}" style="display: block; height: 100%;">
             <div class="product-card__image" style="background-color: #EEEEEE; padding: 20px; position: relative; min-height: 250px; display: flex; align-items: center; justify-content: center;">
               {% if product.featured_image %}
-                <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" style="max-width: 100%; height: auto;">
+                <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" style="max-width: 100%; max-height: 250px; object-fit: contain;">
               {% else %}
                 <span style="color: #999;">Image Placeholder</span>
               {% endif %}
-              <button class="add-to-cart-quick" style="position: absolute; bottom: 10px; right: 10px; width: 40px; height: 40px; background: #333333; color: white; border: none; font-size: 1.5rem; cursor: pointer; border-radius: 4px;">+</button>
+              <button class="add-to-cart-quick" style="position: absolute; bottom: 10px; right: 10px; width: 40px; height: 40px; background: #333333; color: white; border: none; font-size: 1.5rem; cursor: pointer; border-radius: 4px; display: flex; align-items: center; justify-content: center;">+</button>
             </div>
             <h3 style="font-family: var(--font-body); font-weight: 500; font-size: 1rem; margin-top: 15px; color: var(--color-text);">
               {{ product.title }}
@@ -28,11 +40,11 @@
       {%- endfor -%}
     {%- else -%}
       <!-- Mock products if no collection selected -->
-      {% for i in (1..4) %}
-      <div class="product-card" style="text-align: center; border: 1px solid var(--color-border); padding: 15px; border-radius: 4px;">
+      {% for i in (1..6) %}
+      <div class="carousel-item product-card" style="text-align: center; border: 1px solid var(--color-border); padding: 15px; border-radius: 4px;">
         <div class="product-card__image" style="background-color: #EEEEEE; padding: 20px; position: relative; min-height: 250px; display: flex; align-items: center; justify-content: center;">
-          <span style="color: #999;">Product Image</span>
-          <button class="add-to-cart-quick" style="position: absolute; bottom: 10px; right: 10px; width: 40px; height: 40px; background: #333333; color: white; border: none; font-size: 1.5rem; border-radius: 4px;">+</button>
+          <span style="color: #999;">Product Image {{ i }}</span>
+          <button class="add-to-cart-quick" style="position: absolute; bottom: 10px; right: 10px; width: 40px; height: 40px; background: #333333; color: white; border: none; font-size: 1.5rem; border-radius: 4px; display: flex; align-items: center; justify-content: center;">+</button>
         </div>
         <h3 style="font-family: var(--font-body); font-weight: 500; font-size: 1rem; margin-top: 15px; color: var(--color-text);">Product Name Wireframe</h3>
         <div class="product-card__price" style="font-weight: bold; margin-top: 5px; color: var(--color-text-secondary);">$0.00</div>
@@ -42,6 +54,68 @@
   </div>
 </div>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const carousel = document.getElementById('carousel-{{ section.id }}');
+    if (!carousel) return;
+    
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+    let autoPlayInterval;
+
+    // Auto-scroll every 3 seconds
+    function startAutoPlay() {
+      autoPlayInterval = setInterval(() => {
+        const itemWidth = carousel.querySelector('.carousel-item').offsetWidth + 20; // 20 is gap
+        if (carousel.scrollLeft + carousel.clientWidth >= carousel.scrollWidth - 10) {
+          carousel.scrollTo({ left: 0, behavior: 'smooth' }); // Reset to start
+        } else {
+          carousel.scrollBy({ left: itemWidth, behavior: 'smooth' });
+        }
+      }, 3000);
+    }
+
+    function stopAutoPlay() {
+      clearInterval(autoPlayInterval);
+    }
+
+    // Initialize auto play
+    startAutoPlay();
+
+    // Pause on hover or touch
+    carousel.addEventListener('mouseenter', stopAutoPlay);
+    carousel.addEventListener('mouseleave', startAutoPlay);
+    carousel.addEventListener('touchstart', stopAutoPlay);
+    carousel.addEventListener('touchend', startAutoPlay);
+
+    // Optional: Add drag to scroll for desktop
+    carousel.addEventListener('mousedown', (e) => {
+      isDown = true;
+      carousel.style.cursor = 'grabbing';
+      startX = e.pageX - carousel.offsetLeft;
+      scrollLeft = carousel.scrollLeft;
+      stopAutoPlay();
+    });
+    carousel.addEventListener('mouseleave', () => {
+      isDown = false;
+      carousel.style.cursor = 'grab';
+    });
+    carousel.addEventListener('mouseup', () => {
+      isDown = false;
+      carousel.style.cursor = 'grab';
+      startAutoPlay();
+    });
+    carousel.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - carousel.offsetLeft;
+      const walk = (x - startX) * 2; // Scroll-fast
+      carousel.scrollLeft = scrollLeft - walk;
+    });
+  });
+</script>
+
 {% schema %}
 {
   "name": "Featured Collection",
@@ -50,26 +124,23 @@
       "type": "text",
       "id": "title",
       "label": "Heading",
-      "default": "Products Catalog"
+      "default": "Our Solutions"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis."
     },
     {
       "type": "collection",
       "id": "collection",
       "label": "Collection"
-    },
-    {
-      "type": "range",
-      "id": "products_to_show",
-      "min": 2,
-      "max": 12,
-      "step": 1,
-      "default": 4,
-      "label": "Maximum products to show"
     }
   ],
   "presets": [
     {
-      "name": "Featured Collection"
+      "name": "Featured Collection Carousel"
     }
   ]
 }
