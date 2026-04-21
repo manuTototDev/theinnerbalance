@@ -1,0 +1,17 @@
+<div class="page-404" style="padding: 100px 20px; text-align: center; max-width: 600px; margin: 0 auto; color: var(--color-text);">
+  <h1 style="font-size: 5rem; margin-bottom: 10px;">404</h1>
+  <h2 style="font-size: 2rem; margin-bottom: 20px;">Página no encontrada</h2>
+  <p style="color: var(--color-text-secondary); margin-bottom: 40px; font-size: 1.1rem;">
+    Lo sentimos, la página que buscas no existe o ha sido movida.
+  </p>
+  <a href="{{ routes.root_url }}" class="btn btn--primary" style="background-color: #333333; color: #FFFFFF; padding: 15px 40px; border-radius: 4px; text-transform: uppercase;">
+    Volver al Inicio
+  </a>
+</div>
+
+{% schema %}
+{
+  "name": "404 Error Page",
+  "settings": []
+}
+{% endschema %}
