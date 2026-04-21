@@ -1,13 +1,13 @@
-<div class="marquee-container" style="background-color: var(--color-bg); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
-  <div class="marquee-content" style="display: inline-block; animation: marquee 15s linear infinite; font-family: var(--font-heading); font-size: 3rem; color: var(--color-text-secondary); white-space: nowrap;">
-    {% for i in (1..5) %}
+<div class="marquee-container" style="background-color: var(--color-bg); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); overflow: hidden; padding: 10px 0;">
+  <div class="marquee-content" style="display: inline-block; animation: marquee-anim {{ section.settings.speed }}s linear infinite; font-family: var(--font-body); font-size: {{ section.settings.text_size }}rem; color: var(--color-text-secondary); white-space: nowrap;">
+    {% for i in (1..10) %}
       <span style="margin-right: 50px;">{{ section.settings.text }}</span>
     {% endfor %}
   </div>
 </div>
 
 <style>
-@keyframes marquee {
+@keyframes marquee-anim {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
@@ -22,6 +22,27 @@
       "id": "text",
       "label": "Marquee Text",
       "default": "Categoría 1 • Categoría 2 • Categoría 3"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "min": 1,
+      "max": 5,
+      "step": 0.5,
+      "unit": "rem",
+      "label": "Text Size",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 5,
+      "max": 60,
+      "step": 1,
+      "unit": "s",
+      "label": "Animation Speed (Seconds)",
+      "default": 15,
+      "info": "Lower number means faster speed."
     }
   ],
   "presets": [
