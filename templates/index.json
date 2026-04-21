@@ -18,11 +18,18 @@
       "settings": {
         "title": "Our Solutions"
       }
+    },
+    "featured_collection_2": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Anti-Ageing Collection"
+      }
     }
   },
   "order": [
     "hero",
     "marquee",
-    "featured_collection"
+    "featured_collection",
+    "featured_collection_2"
   ]
 }
