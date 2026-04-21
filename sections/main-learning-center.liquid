@@ -1,18 +1,18 @@
 <div class="learning-center-page" style="padding: 60px 20px; max-width: 900px; margin: 0 auto; color: var(--color-text);">
-  <h1 style="text-align: center; margin-bottom: 20px; font-size: 2.5rem;">{{ page.title | default: 'Learning Center' }}</h1>
-  <p style="text-align: center; font-size: 1.2rem; color: var(--color-text-secondary); margin-bottom: 60px;">
-    Preguntas frecuentes, guías de uso y beneficios de la salud íntima holística.
+  <h1 style="text-align: center; margin-bottom: 20px; font-size: 3rem;">{{ page.title | default: 'Learning Center' }}</h1>
+  <p style="text-align: center; font-size: 1.2rem; color: var(--color-text-secondary); margin-bottom: 60px; line-height: 1.6;">
+    El conocimiento es el primer paso hacia el bienestar. <br>Aquí encontrarás respuestas científicas a las preguntas más comunes sobre salud, rutinas y prevención íntima.
   </p>
 
   <div class="faq-container">
     {% for block in section.blocks %}
       <div class="faq-item" style="border: 1px solid var(--color-border); border-radius: 4px; margin-bottom: 15px; background: #FFFFFF; overflow: hidden;">
-        <button class="faq-question" style="width: 100%; text-align: left; background: none; border: none; padding: 20px; font-size: 1.1rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: var(--color-text); font-family: var(--font-body);">
+        <button class="faq-question" style="width: 100%; text-align: left; background: none; border: none; padding: 25px; font-size: 1.2rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: var(--color-text); font-family: var(--font-body);">
           {{ block.settings.question }}
-          <span class="faq-icon" style="font-size: 1.5rem; line-height: 1;">+</span>
+          <span class="faq-icon" style="font-size: 1.8rem; line-height: 1; transition: transform 0.3s;">+</span>
         </button>
-        <div class="faq-answer" style="padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: var(--color-text-secondary); line-height: 1.6;">
-          <div style="padding-bottom: 20px;">
+        <div class="faq-answer" style="padding: 0 25px; max-height: 0; overflow: hidden; transition: max-height 0.4s ease; color: var(--color-text-secondary); line-height: 1.8; font-size: 1.1rem;">
+          <div style="padding-bottom: 25px;">
             {{ block.settings.answer }}
           </div>
         </div>
@@ -32,11 +32,15 @@
 
         // Close all others
         document.querySelectorAll('.faq-answer').forEach(ans => ans.style.maxHeight = null);
-        document.querySelectorAll('.faq-icon').forEach(icn => icn.textContent = '+');
+        document.querySelectorAll('.faq-icon').forEach(icn => {
+          icn.textContent = '+';
+          icn.style.transform = 'rotate(0deg)';
+        });
 
         if (!isOpen) {
           answer.style.maxHeight = answer.scrollHeight + "px";
           icon.textContent = '−';
+          icon.style.transform = 'rotate(180deg)';
         }
       });
     });
@@ -55,14 +59,12 @@
         {
           "type": "text",
           "id": "question",
-          "label": "Question",
-          "default": "¿Por qué es importante usar productos específicos para el cuidado íntimo?"
+          "label": "Question"
         },
         {
           "type": "richtext",
           "id": "answer",
-          "label": "Answer",
-          "default": "<p>El área íntima tiene un pH diferente al resto del cuerpo. Los jabones tradicionales pueden alterar este balance, causando irritación y propiciando infecciones. Nuestros productos están formulados para mantener y proteger el microbioma natural.</p>"
+          "label": "Answer"
         }
       ]
     }
@@ -71,9 +73,41 @@
     {
       "name": "Learning Center (FAQ)",
       "blocks": [
-        { "type": "faq" },
-        { "type": "faq", "settings": { "question": "¿Qué es el anti-ageing íntimo?", "answer": "<p>Con el tiempo, la zona íntima pierde colágeno y elasticidad, lo que puede causar resequedad severa y molestias. Nuestras rutinas de anti-ageing incluyen hidratantes y serums para recuperar el confort y la barrera protectora.</p>" } },
-        { "type": "faq", "settings": { "question": "¿Con qué frecuencia debo usar los productos?", "answer": "<p>Los geles de limpieza están diseñados para uso diario durante el baño. Los hidratantes y serums pueden aplicarse de 1 a 2 veces al día dependiendo de tu necesidad de hidratación y las recomendaciones de tu especialista.</p>" } }
+        { 
+          "type": "faq", 
+          "settings": { 
+            "question": "¿Por qué no puedo usar jabón corporal común en mi zona íntima?", 
+            "answer": "<p>La piel del cuerpo tiene un pH que ronda entre 5.5 y 6.0, mientras que el área íntima femenina tiene un pH más ácido (entre 3.5 y 4.5) que actúa como barrera protectora contra bacterias y hongos. Usar jabones corporales (que suelen ser muy alcalinos) destruye esta barrera ácida natural, causando resequedad severa, picazón y predisposición a infecciones. Nuestros geles limpiadores están formulados exactamente con el pH y los prebióticos que tu cuerpo necesita.</p>" 
+          } 
+        },
+        { 
+          "type": "faq", 
+          "settings": { 
+            "question": "¿Qué significa exactamente 'Anti-Ageing Íntimo'?", 
+            "answer": "<p>A medida que envejecemos, especialmente cerca de la menopausia o tras variaciones hormonales fuertes, la piel vulvar pierde colágeno, elastina y su capacidad de retener humedad natural. Esto causa atrofia, incomodidad física y dolor. El anti-ageing íntimo no es por estética; es prevención médica. Utilizamos ácido hialurónico de bajo peso molecular, péptidos y extractos botánicos que devuelven la hidratación profunda, elasticidad y el confort estructural a tus tejidos.</p>" 
+          } 
+        },
+        { 
+          "type": "faq", 
+          "settings": { 
+            "question": "¿Cómo se estructuraría una rutina íntima ideal?", 
+            "answer": "<p>Una rutina básica se divide en dos pasos clave: <strong>1. Limpieza suave (Ducha):</strong> Usa nuestro Mousse Prebiótico de uso diario para higienizar sin irritar, enjuagando solo con agua. <strong>2. Hidratación Preventiva (Fuera de la ducha):</strong> Aplica nuestro Serum Íntimo Hidratante sobre la piel externa limpia y seca. Si experimentas resequedad constante, recomendamos aplicar el suero por la mañana y por la noche.</p>" 
+          } 
+        },
+        { 
+          "type": "faq", 
+          "settings": { 
+            "question": "¿Sus productos son seguros para el embarazo y posparto?", 
+            "answer": "<p>Absolutamente. Durante el embarazo y posparto, ocurren cambios hormonales drásticos que pueden afectar el microbioma vaginal y causar sensibilidad extrema. Nuestras fórmulas limpias, libres de parabenos y fragancias sintéticas fuertes, están ginecológicamente testeadas para ser seguras y aliviar las molestias típicas de estos periodos. Sin embargo, siempre recomendamos consultar con tu médico tratante.</p>" 
+          } 
+        },
+        { 
+          "type": "faq", 
+          "settings": { 
+            "question": "¿Qué ingredientes evitan y por qué?", 
+            "answer": "<p>Nuestra filosofía es de transparencia radical. Hemos eliminado por completo de nuestras fórmulas: Sulfatos agresivos (como SLS o SLES que resecan), Parabenos (disruptores hormonales comprobados), Fragancias artificiales con alérgenos y Colorantes sintéticos. Solo usamos componentes activos biocompatibles y extractos botánicos que tu cuerpo reconoce y asimila.</p>" 
+          } 
+        }
       ]
     }
   ]

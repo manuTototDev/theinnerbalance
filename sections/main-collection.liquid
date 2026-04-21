@@ -1,23 +1,46 @@
-<div style="padding: 40px 20px;">
-  <h1 style="text-align: center; margin-bottom: 40px;">{{ collection.title }}</h1>
-  
-  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto;">
+<div class="collection-hero" style="width: 100%; background-color: #EEEEEE; padding: 100px 20px; text-align: center; border-bottom: 1px solid var(--color-border); margin-bottom: 40px;">
+  <div style="max-width: 800px; margin: 0 auto;">
+    <h1 style="font-size: 3rem; margin-bottom: 20px; color: var(--color-text);">{{ collection.title }}</h1>
+    {% if collection.description != blank %}
+      <div class="collection-benefits" style="font-size: 1.2rem; line-height: 1.8; color: var(--color-text-secondary);">
+        {{ collection.description }}
+      </div>
+    {% else %}
+      <div class="collection-benefits wireframe-placeholder" style="font-size: 1.2rem; line-height: 1.8; color: var(--color-text-secondary);">
+        <p><strong>Beneficios de la colección:</strong> Aquí se mostrará la descripción completa de tu colección. Explica por qué estos productos son únicos, cómo mejoran la rutina de cuidado íntimo y los beneficios específicos (ej. balance de pH, hidratación profunda, frescura prolongada). Puedes editar este texto desde el administrador de Shopify en la sección de "Colecciones".</p>
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<div class="collection-products" style="padding: 0 40px 80px 40px; width: 100%;">
+  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 40px; width: 100%;">
     {% for product in collection.products %}
-      <div style="text-align: center;">
-        <a href="{{ product.url }}">
-          <div style="background: #f4f4f4; padding: 20px; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; margin-bottom: 15px;">
+      <div class="product-card" style="text-align: center; border: 1px solid var(--color-border); padding: 20px; border-radius: 4px; transition: box-shadow 0.3s;">
+        <a href="{{ product.url }}" style="text-decoration: none; color: inherit;">
+          <div style="background: #FFFFFF; border: 1px solid #EEEEEE; padding: 30px; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; position: relative;">
             {% if product.featured_image %}
-              <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" style="max-width: 100%; max-height: 100%;">
+              <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
             {% else %}
-              Product Image
+              <span style="color: #999; font-size: 1.2rem;">Image Placeholder</span>
             {% endif %}
+            
+            <div style="position: absolute; bottom: 15px; right: 15px; background: #333; color: #fff; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">+</div>
           </div>
-          <h3 style="font-size: 1rem; margin: 0 0 10px;">{{ product.title }}</h3>
-          <div style="font-weight: bold;">{{ product.price | money }}</div>
+          <h3 style="font-size: 1.2rem; font-weight: 600; margin: 0 0 10px; color: var(--color-text);">{{ product.title }}</h3>
+          <div style="font-weight: 500; font-size: 1.1rem; color: var(--color-text-secondary);">{{ product.price | money }}</div>
         </a>
       </div>
     {% else %}
-      <p style="grid-column: 1 / -1; text-align: center;">No hay productos en esta categoría.</p>
+      {% for i in (1..8) %}
+        <div class="product-card" style="text-align: center; border: 1px solid var(--color-border); padding: 20px; border-radius: 4px;">
+          <div style="background: #FFFFFF; border: 1px solid #EEEEEE; padding: 30px; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+            <span style="color: #999;">Producto Wireframe {{ i }}</span>
+          </div>
+          <h3 style="font-size: 1.2rem; margin: 0 0 10px;">Nombre del Producto</h3>
+          <div style="font-weight: bold;">$00.00</div>
+        </div>
+      {% endfor %}
     {% endfor %}
   </div>
 </div>

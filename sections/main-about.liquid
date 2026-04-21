@@ -1,26 +1,43 @@
-<div class="about-page" style="padding: 60px 20px; max-width: 800px; margin: 0 auto; color: var(--color-text);">
-  <h1 style="text-align: center; margin-bottom: 50px; font-size: 2.5rem;">{{ page.title | default: 'About Us Wireframe' }}</h1>
+<div class="about-page" style="padding: 60px 20px; max-width: 900px; margin: 0 auto; color: var(--color-text);">
+  <h1 style="text-align: center; margin-bottom: 20px; font-size: 3rem;">{{ page.title | default: 'Our Story & Philosophy' }}</h1>
+  <p style="text-align: center; font-size: 1.2rem; color: var(--color-text-secondary); margin-bottom: 60px;">Redefiniendo el cuidado personal a través de la ciencia, la empatía y la salud holística.</p>
 
-  <div class="about-section" style="margin-bottom: 60px; border: 1px solid var(--color-border); padding: 30px; border-radius: 4px; background: #FFFFFF;">
-    <h2 style="font-size: 1.8rem; margin-bottom: 20px; border-bottom: 1px solid var(--color-border); padding-bottom: 10px;">{{ section.settings.heading_1 }}</h2>
-    <div style="line-height: 1.8; color: var(--color-text-secondary); font-size: 1.1rem;">
-      {{ section.settings.content_1 }}
+  <div class="about-section" style="margin-bottom: 60px; display: flex; flex-wrap: wrap; gap: 40px; align-items: center;">
+    <div style="flex: 1; min-width: 300px;">
+      <h2 style="font-size: 2rem; margin-bottom: 20px; color: var(--color-text);">{{ section.settings.heading_1 }}</h2>
+      <div style="line-height: 1.8; color: var(--color-text-secondary); font-size: 1.1rem;">
+        {{ section.settings.content_1 }}
+      </div>
     </div>
-    <div style="margin-top: 20px; height: 150px; background: #EEEEEE; border: 1px solid #CCCCCC; display: flex; align-items: center; justify-content: center; color: #999;">
-      Placeholder Image / Box
+    <div style="flex: 1; min-width: 300px; height: 400px; background: #EEEEEE; border: 1px solid #CCCCCC; display: flex; align-items: center; justify-content: center; color: #999; font-size: 1.2rem;">
+      [Imagen de la Fundadora o Laboratorio]
     </div>
   </div>
 
-  <div class="about-section" style="margin-bottom: 60px; border: 1px solid var(--color-border); padding: 30px; border-radius: 4px; background: #FFFFFF;">
-    <h2 style="font-size: 1.8rem; margin-bottom: 20px; border-bottom: 1px solid var(--color-border); padding-bottom: 10px;">{{ section.settings.heading_2 }}</h2>
-    <div style="line-height: 1.8; color: var(--color-text-secondary); font-size: 1.1rem;">
+  <div class="about-section" style="margin-bottom: 60px; padding: 60px; border: 1px solid var(--color-border); border-radius: 4px; background: #FAFAFA; text-align: center;">
+    <h2 style="font-size: 2rem; margin-bottom: 20px;">{{ section.settings.heading_2 }}</h2>
+    <div style="line-height: 1.8; color: var(--color-text-secondary); font-size: 1.2rem; max-width: 700px; margin: 0 auto;">
       {{ section.settings.content_2 }}
     </div>
   </div>
 
-  <div class="about-section" style="margin-bottom: 60px; border: 1px solid var(--color-border); padding: 30px; border-radius: 4px; background: #FFFFFF;">
-    <h2 style="font-size: 1.8rem; margin-bottom: 20px; border-bottom: 1px solid var(--color-border); padding-bottom: 10px;">{{ section.settings.heading_3 }}</h2>
-    <div style="line-height: 1.8; color: var(--color-text-secondary); font-size: 1.1rem;">
+  <div class="about-section" style="margin-bottom: 60px;">
+    <h2 style="font-size: 2rem; margin-bottom: 30px; text-align: center;">{{ section.settings.heading_3 }}</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px;">
+      <div style="border: 1px solid var(--color-border); padding: 30px; text-align: center; background: #FFFFFF;">
+        <h3 style="font-size: 1.3rem; margin-bottom: 15px;">Microbioma Intacto</h3>
+        <p style="color: var(--color-text-secondary); line-height: 1.6;">Ingredientes clínicamente probados que respetan y nutren la flora protectora natural sin alteraciones.</p>
+      </div>
+      <div style="border: 1px solid var(--color-border); padding: 30px; text-align: center; background: #FFFFFF;">
+        <h3 style="font-size: 1.3rem; margin-bottom: 15px;">Transparencia Radical</h3>
+        <p style="color: var(--color-text-secondary); line-height: 1.6;">Nuestras etiquetas son claras. Cero ingredientes ocultos, disruptores endocrinos ni fragancias sintéticas.</p>
+      </div>
+      <div style="border: 1px solid var(--color-border); padding: 30px; text-align: center; background: #FFFFFF;">
+        <h3 style="font-size: 1.3rem; margin-bottom: 15px;">Bienestar Integral</h3>
+        <p style="color: var(--color-text-secondary); line-height: 1.6;">La comodidad física previene la ansiedad emocional. Creemos que estar bien inicia desde el confort más íntimo.</p>
+      </div>
+    </div>
+    <div style="line-height: 1.8; color: var(--color-text-secondary); font-size: 1.1rem; text-align: center; margin-top: 40px;">
       {{ section.settings.content_3 }}
     </div>
   </div>
@@ -34,37 +51,37 @@
       "type": "text",
       "id": "heading_1",
       "label": "Section 1 Heading",
-      "default": "Section 1: About Us"
+      "default": "Rompiendo el Tabú del Cuidado Íntimo"
     },
     {
       "type": "richtext",
       "id": "content_1",
       "label": "Section 1 Content",
-      "default": "<p>En The Inner Balance creemos que el cuidado íntimo debe dejar de ser un tabú para convertirse en un pilar esencial del bienestar integral. Formulamos soluciones basadas en evidencia científica, respetuosas con la microbiota y diseñadas específicamente para optimizar la salud holística íntima de la mujer, reconectando cuerpo, mente y autoconfianza.</p>"
+      "default": "<p>Durante décadas, el cuidado íntimo femenino ha estado rodeado de desinformación, vergüenza y productos agresivos disfrazados de soluciones cosméticas. En <strong>The Inner Balance</strong>, nacimos con la convicción de que la higiene y salud de la zona más delicada del cuerpo humano merece la misma innovación científica y atención que le damos a la piel de nuestro rostro.</p><p>Formulamos tratamientos respaldados por ginecólogos y dermatólogos, diseñados específicamente para optimizar el ecosistema vulvovaginal, reconectando a las mujeres con su bienestar y autoconfianza plena.</p>"
     },
     {
       "type": "text",
       "id": "heading_2",
       "label": "Section 2 Heading",
-      "default": "Section 2: Mission"
+      "default": "Nuestra Misión"
     },
     {
       "type": "richtext",
       "id": "content_2",
       "label": "Section 2 Content",
-      "default": "<p>Nuestra misión es empoderar a las mujeres a través de la educación y el autocuidado. Desarrollamos productos de higiene y prevención (anti-ageing) íntima con ingredientes premium, enfocados en mantener el pH óptimo, prevenir desequilibrios y mejorar la calidad de vida diaria.</p>"
+      "default": "<p>Queremos empoderar a mujeres de todas las edades a través de la educación y el autocuidado consciente. Nos especializamos en la prevención (anti-ageing) y en soluciones de limpieza inteligente, manteniendo el pH óptimo para mejorar la calidad de vida en todas las etapas hormonales.</p>"
     },
     {
       "type": "text",
       "id": "heading_3",
       "label": "Section 3 Heading",
-      "default": "Section 3: Values"
+      "default": "Nuestros Pilares"
     },
     {
       "type": "richtext",
       "id": "content_3",
       "label": "Section 3 Content",
-      "default": "<p><strong>Ciencia y Naturaleza:</strong> Fórmulas limpias respaldadas clínicamente.<br><strong>Transparencia:</strong> Cero ingredientes ocultos, máxima eficacia.<br><strong>Cuidado Holístico:</strong> Entendemos que el confort físico íntimo es la base para el bienestar mental y emocional.</p>"
+      "default": "<p>Toda formulación de The Inner Balance pasa por estrictos controles de calidad europeos. Promovemos una rutina tan esencial como lavarse los dientes, pero con la suavidad de un ritual de spa.</p>"
     }
   ],
   "presets": [
