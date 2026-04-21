@@ -24,12 +24,17 @@
       "settings": {
         "title": "Anti-Ageing Collection"
       }
+    },
+    "learning_center_preview": {
+      "type": "learning-center-preview",
+      "settings": {}
     }
   },
   "order": [
     "hero",
     "marquee",
     "featured_collection",
-    "featured_collection_2"
+    "featured_collection_2",
+    "learning_center_preview"
   ]
 }

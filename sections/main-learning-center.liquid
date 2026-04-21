@@ -1,0 +1,81 @@
+<div class="learning-center-page" style="padding: 60px 20px; max-width: 900px; margin: 0 auto; color: var(--color-text);">
+  <h1 style="text-align: center; margin-bottom: 20px; font-size: 2.5rem;">{{ page.title | default: 'Learning Center' }}</h1>
+  <p style="text-align: center; font-size: 1.2rem; color: var(--color-text-secondary); margin-bottom: 60px;">
+    Preguntas frecuentes, guías de uso y beneficios de la salud íntima holística.
+  </p>
+
+  <div class="faq-container">
+    {% for block in section.blocks %}
+      <div class="faq-item" style="border: 1px solid var(--color-border); border-radius: 4px; margin-bottom: 15px; background: #FFFFFF; overflow: hidden;">
+        <button class="faq-question" style="width: 100%; text-align: left; background: none; border: none; padding: 20px; font-size: 1.1rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: var(--color-text); font-family: var(--font-body);">
+          {{ block.settings.question }}
+          <span class="faq-icon" style="font-size: 1.5rem; line-height: 1;">+</span>
+        </button>
+        <div class="faq-answer" style="padding: 0 20px; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: var(--color-text-secondary); line-height: 1.6;">
+          <div style="padding-bottom: 20px;">
+            {{ block.settings.answer }}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const questions = document.querySelectorAll('.faq-question');
+    questions.forEach(question => {
+      question.addEventListener('click', () => {
+        const answer = question.nextElementSibling;
+        const icon = question.querySelector('.faq-icon');
+        const isOpen = answer.style.maxHeight;
+
+        // Close all others
+        document.querySelectorAll('.faq-answer').forEach(ans => ans.style.maxHeight = null);
+        document.querySelectorAll('.faq-icon').forEach(icn => icn.textContent = '+');
+
+        if (!isOpen) {
+          answer.style.maxHeight = answer.scrollHeight + "px";
+          icon.textContent = '−';
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Learning Center (FAQ)",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "¿Por qué es importante usar productos específicos para el cuidado íntimo?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>El área íntima tiene un pH diferente al resto del cuerpo. Los jabones tradicionales pueden alterar este balance, causando irritación y propiciando infecciones. Nuestros productos están formulados para mantener y proteger el microbioma natural.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Learning Center (FAQ)",
+      "blocks": [
+        { "type": "faq" },
+        { "type": "faq", "settings": { "question": "¿Qué es el anti-ageing íntimo?", "answer": "<p>Con el tiempo, la zona íntima pierde colágeno y elasticidad, lo que puede causar resequedad severa y molestias. Nuestras rutinas de anti-ageing incluyen hidratantes y serums para recuperar el confort y la barrera protectora.</p>" } },
+        { "type": "faq", "settings": { "question": "¿Con qué frecuencia debo usar los productos?", "answer": "<p>Los geles de limpieza están diseñados para uso diario durante el baño. Los hidratantes y serums pueden aplicarse de 1 a 2 veces al día dependiendo de tu necesidad de hidratación y las recomendaciones de tu especialista.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

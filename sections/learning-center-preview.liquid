@@ -1,0 +1,64 @@
+<div class="learning-center-preview" style="padding: 60px 20px; background-color: var(--color-bg); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border); text-align: center;">
+  <div style="max-width: 800px; margin: 0 auto;">
+    <h2 style="font-size: 2.2rem; margin-bottom: 20px; color: var(--color-text);">{{ section.settings.title }}</h2>
+    <div style="font-size: 1.1rem; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 30px;">
+      {{ section.settings.description }}
+    </div>
+
+    <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; text-align: left;">
+      <div style="flex: 1; min-width: 200px; border: 1px solid var(--color-border); padding: 20px; border-radius: 4px; background: #FFFFFF;">
+        <h3 style="font-size: 1.2rem; margin-bottom: 10px; color: var(--color-text);">Equilibrio del pH</h3>
+        <p style="color: var(--color-text-secondary); font-size: 0.95rem;">Mantiene la barrera natural protectora y evita proliferación de bacterias no deseadas.</p>
+      </div>
+      <div style="flex: 1; min-width: 200px; border: 1px solid var(--color-border); padding: 20px; border-radius: 4px; background: #FFFFFF;">
+        <h3 style="font-size: 1.2rem; margin-bottom: 10px; color: var(--color-text);">Anti-Ageing Íntimo</h3>
+        <p style="color: var(--color-text-secondary); font-size: 0.95rem;">Hidratación profunda que previene la sequedad, mejorando la elasticidad y el confort diario.</p>
+      </div>
+      <div style="flex: 1; min-width: 200px; border: 1px solid var(--color-border); padding: 20px; border-radius: 4px; background: #FFFFFF;">
+        <h3 style="font-size: 1.2rem; margin-bottom: 10px; color: var(--color-text);">Fórmulas Limpias</h3>
+        <p style="color: var(--color-text-secondary); font-size: 0.95rem;">Sin perfumes agresivos ni parabenos. Dermatológica y ginecológicamente testeados.</p>
+      </div>
+    </div>
+
+    <a href="{{ section.settings.button_link }}" class="btn btn--primary" style="background-color: #333333; color: #FFFFFF; padding: 15px 40px; font-weight: 600; border-radius: 4px; text-transform: uppercase;">
+      {{ section.settings.button_label }}
+    </a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Learning Center Preview",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Aprende con The Inner Balance"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Descubre por qué una rutina de cuidado íntimo estructurada y basada en ciencia transforma tu bienestar. Desde el equilibrio del pH hasta la hidratación preventiva.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Ir al Learning Center"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link",
+      "default": "/pages/learning-center"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Learning Center Preview"
+    }
+  ]
+}
+{% endschema %}
