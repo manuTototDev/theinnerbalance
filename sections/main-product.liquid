@@ -3,7 +3,7 @@
     {% if product.featured_image %}
       <img src="{{ product.featured_image | image_url: width: 800 }}" alt="{{ product.title }}" style="width: 100%; height: auto; border-radius: 4px; border: 1px solid var(--color-border);">
     {% else %}
-      <div style="width: 100%; height: 500px; background: #EEEEEE; border: 1px solid #CCCCCC; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: #999;">Product Image Placeholder</div>
+      <div style="width: 100%; height: 500px; background: var(--color-secondary-bg); border: 1px solid var(--color-border); border-radius: 4px; display: flex; align-items: center; justify-content: center; color: var(--color-text-secondary);">Product Image Placeholder</div>
     {% endif %}
   </div>
 
@@ -19,19 +19,19 @@
         
         <div style="margin-bottom: 20px;">
           <label for="Quantity" style="font-weight: 500;">Quantity</label>
-          <input type="number" id="Quantity" name="quantity" value="1" min="1" style="width: 60px; padding: 10px; margin-left: 10px; border: 1px solid #CCCCCC; border-radius: 4px;">
+          <input type="number" id="Quantity" name="quantity" value="1" min="1" style="width: 60px; padding: 10px; margin-left: 10px; border: 1px solid var(--color-border); border-radius: 4px;">
         </div>
 
-        <button type="submit" class="btn btn--primary btn--full" style="padding: 15px; font-size: 1.1rem; background-color: #333333; color: white; border: none; cursor: pointer; border-radius: 4px; text-transform: uppercase;">
+        <button type="submit" class="btn btn--primary btn--full" style="padding: 15px; font-size: 1.1rem; background-color: var(--color-button-bg); color: white; border: none; cursor: pointer; border-radius: 4px; text-transform: uppercase;">
           Add to Cart
         </button>
       {%- endform -%}
     {%- else -%}
       <div style="margin-bottom: 20px;">
         <label for="Quantity" style="font-weight: 500;">Quantity</label>
-        <input type="number" id="Quantity" value="1" min="1" style="width: 60px; padding: 10px; margin-left: 10px; border: 1px solid #CCCCCC; border-radius: 4px;">
+        <input type="number" id="Quantity" value="1" min="1" style="width: 60px; padding: 10px; margin-left: 10px; border: 1px solid var(--color-border); border-radius: 4px;">
       </div>
-      <button type="button" class="btn btn--primary btn--full" style="padding: 15px; font-size: 1.1rem; background-color: #333333; color: white; border: none; border-radius: 4px; text-transform: uppercase;">
+      <button type="button" class="btn btn--primary btn--full" style="padding: 15px; font-size: 1.1rem; background-color: var(--color-button-bg); color: white; border: none; border-radius: 4px; text-transform: uppercase;">
         Add to Cart
       </button>
     {%- endif -%}
@@ -50,9 +50,9 @@
     </div>
     
     <!-- Learning Center / Support links from Journey Map -->
-    <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #CCCCCC;">
-      <a href="#" style="display: block; padding: 15px 0; font-weight: 600; border-bottom: 1px solid #EEEEEE; color: var(--color-text);">Learning Center →</a>
-      <a href="#" style="display: block; padding: 15px 0; font-weight: 600; border-bottom: 1px solid #EEEEEE; color: var(--color-text);">Soporte →</a>
+    <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--color-border);">
+      <a href="#" style="display: block; padding: 15px 0; font-weight: 600; border-bottom: 1px solid var(--color-secondary-bg); color: var(--color-text);">Learning Center →</a>
+      <a href="#" style="display: block; padding: 15px 0; font-weight: 600; border-bottom: 1px solid var(--color-secondary-bg); color: var(--color-text);">Soporte →</a>
     </div>
   </div>
 </div>

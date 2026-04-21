@@ -1,4 +1,4 @@
-<div class="collection-hero" style="width: 100%; background-color: #EEEEEE; padding: 100px 20px; text-align: center; border-bottom: 1px solid var(--color-border); margin-bottom: 40px;">
+<div class="collection-hero" style="width: 100%; background-color: var(--color-secondary-bg); padding: 100px 20px; text-align: center; border-bottom: 1px solid var(--color-border); margin-bottom: 40px;">
   <div style="max-width: 800px; margin: 0 auto;">
     <h1 style="font-size: 3rem; margin-bottom: 20px; color: var(--color-text);">{{ collection.title }}</h1>
     {% if collection.description != blank %}
@@ -18,11 +18,11 @@
     {% for product in collection.products %}
       <div class="product-card" style="text-align: center; border: 1px solid var(--color-border); padding: 20px; border-radius: 4px; transition: box-shadow 0.3s;">
         <a href="{{ product.url }}" style="text-decoration: none; color: inherit;">
-          <div style="background: #FFFFFF; border: 1px solid #EEEEEE; padding: 30px; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; position: relative;">
+          <div style="background: var(--color-card-bg); border: 1px solid var(--color-secondary-bg); padding: 30px; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; position: relative;">
             {% if product.featured_image %}
               <img src="{{ product.featured_image | image_url: width: 600 }}" alt="{{ product.title }}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
             {% else %}
-              <span style="color: #999; font-size: 1.2rem;">Image Placeholder</span>
+              <span style="color: var(--color-text-secondary); font-size: 1.2rem;">Image Placeholder</span>
             {% endif %}
             
             <div style="position: absolute; bottom: 15px; right: 15px; background: #333; color: #fff; width: 45px; height: 45px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;">+</div>
@@ -34,8 +34,8 @@
     {% else %}
       {% for i in (1..8) %}
         <div class="product-card" style="text-align: center; border: 1px solid var(--color-border); padding: 20px; border-radius: 4px;">
-          <div style="background: #FFFFFF; border: 1px solid #EEEEEE; padding: 30px; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
-            <span style="color: #999;">Producto Wireframe {{ i }}</span>
+          <div style="background: var(--color-card-bg); border: 1px solid var(--color-secondary-bg); padding: 30px; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+            <span style="color: var(--color-text-secondary);">Producto Wireframe {{ i }}</span>
           </div>
           <h3 style="font-size: 1.2rem; margin: 0 0 10px;">Nombre del Producto</h3>
           <div style="font-weight: bold;">$00.00</div>

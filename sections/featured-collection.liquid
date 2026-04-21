@@ -21,13 +21,13 @@
       {%- for product in collection.products -%}
         <div class="carousel-item product-card" style="text-align: center; border: 1px solid var(--color-border); padding: 15px; border-radius: 4px;">
           <a href="{{ product.url }}" style="display: block; height: 100%;">
-            <div class="product-card__image" style="background-color: #EEEEEE; padding: 20px; position: relative; min-height: 250px; display: flex; align-items: center; justify-content: center;">
+            <div class="product-card__image" style="background-color: var(--color-secondary-bg); padding: 20px; position: relative; min-height: 250px; display: flex; align-items: center; justify-content: center;">
               {% if product.featured_image %}
                 <img src="{{ product.featured_image | image_url: width: 400 }}" alt="{{ product.title }}" style="max-width: 100%; max-height: 250px; object-fit: contain;">
               {% else %}
-                <span style="color: #999;">Image Placeholder</span>
+                <span style="color: var(--color-text-secondary);">Image Placeholder</span>
               {% endif %}
-              <button class="add-to-cart-quick" style="position: absolute; bottom: 10px; right: 10px; width: 40px; height: 40px; background: #333333; color: white; border: none; font-size: 1.5rem; cursor: pointer; border-radius: 4px; display: flex; align-items: center; justify-content: center;">+</button>
+              <button class="add-to-cart-quick" style="position: absolute; bottom: 10px; right: 10px; width: 40px; height: 40px; background: var(--color-button-bg); color: white; border: none; font-size: 1.5rem; cursor: pointer; border-radius: 4px; display: flex; align-items: center; justify-content: center;">+</button>
             </div>
             <h3 style="font-family: var(--font-body); font-weight: 500; font-size: 1rem; margin-top: 15px; color: var(--color-text);">
               {{ product.title }}
@@ -42,9 +42,9 @@
       <!-- Mock products if no collection selected -->
       {% for i in (1..6) %}
       <div class="carousel-item product-card" style="text-align: center; border: 1px solid var(--color-border); padding: 15px; border-radius: 4px;">
-        <div class="product-card__image" style="background-color: #EEEEEE; padding: 20px; position: relative; min-height: 250px; display: flex; align-items: center; justify-content: center;">
-          <span style="color: #999;">Product Image {{ i }}</span>
-          <button class="add-to-cart-quick" style="position: absolute; bottom: 10px; right: 10px; width: 40px; height: 40px; background: #333333; color: white; border: none; font-size: 1.5rem; border-radius: 4px; display: flex; align-items: center; justify-content: center;">+</button>
+        <div class="product-card__image" style="background-color: var(--color-secondary-bg); padding: 20px; position: relative; min-height: 250px; display: flex; align-items: center; justify-content: center;">
+          <span style="color: var(--color-text-secondary);">Product Image {{ i }}</span>
+          <button class="add-to-cart-quick" style="position: absolute; bottom: 10px; right: 10px; width: 40px; height: 40px; background: var(--color-button-bg); color: white; border: none; font-size: 1.5rem; border-radius: 4px; display: flex; align-items: center; justify-content: center;">+</button>
         </div>
         <h3 style="font-family: var(--font-body); font-weight: 500; font-size: 1rem; margin-top: 15px; color: var(--color-text);">Product Name Wireframe</h3>
         <div class="product-card__price" style="font-weight: bold; margin-top: 5px; color: var(--color-text-secondary);">$0.00</div>

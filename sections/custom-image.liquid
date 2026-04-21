@@ -1,0 +1,123 @@
+<div class="custom-image-section" style="padding: {{ section.settings.padding_y }}px {{ section.settings.padding_x }}px; background-color: {{ section.settings.bg_color }}; text-align: {{ section.settings.alignment }};">
+  <div style="max-width: {{ section.settings.max_width }}px; margin: 0 auto;">
+    {% if section.settings.image != blank %}
+      <img src="{{ section.settings.image | image_url: width: section.settings.image_width }}" alt="{{ section.settings.image.alt | default: 'Custom Image' }}" style="max-width: 100%; height: auto; border-radius: {{ section.settings.border_radius }}px;">
+    {% else %}
+      <div style="width: 100%; padding: 100px 20px; background: var(--color-border); color: var(--color-text-secondary); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; border-radius: {{ section.settings.border_radius }}px;">
+        [Placeholder de Imagen]
+      </div>
+    {% endif %}
+    
+    {% if section.settings.caption != blank %}
+      <p style="margin-top: 15px; color: {{ section.settings.text_color }}; font-size: {{ section.settings.caption_size }}rem;">
+        {{ section.settings.caption }}
+      </p>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom Image",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "range",
+      "id": "image_width",
+      "min": 200,
+      "max": 2000,
+      "step": 50,
+      "unit": "px",
+      "label": "Image Load Width",
+      "default": 800
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "min": 400,
+      "max": 1600,
+      "step": 50,
+      "unit": "px",
+      "label": "Container Max Width",
+      "default": 1000
+    },
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Caption"
+    },
+    {
+      "type": "range",
+      "id": "caption_size",
+      "min": 0.8,
+      "max": 2,
+      "step": 0.1,
+      "unit": "rem",
+      "label": "Caption Size",
+      "default": 1.1
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Caption Color",
+      "default": "var(--color-text-secondary)"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "transparent"
+    },
+    {
+      "type": "range",
+      "id": "padding_y",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Vertical Padding",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_x",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "label": "Horizontal Padding",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Border Radius",
+      "default": 0
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "center"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Image"
+    }
+  ]
+}
+{% endschema %}

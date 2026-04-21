@@ -57,6 +57,18 @@
         "id": "color_announcement_text",
         "label": "Announcement Text",
         "default": "#333333"
+      },
+      {
+        "type": "color",
+        "id": "color_card_bg",
+        "label": "Card Background",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "color",
+        "id": "color_secondary_bg",
+        "label": "Secondary Background",
+        "default": "#EEEEEE"
       }
     ]
   },

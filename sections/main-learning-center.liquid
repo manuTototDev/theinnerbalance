@@ -1,7 +1,7 @@
 <div class="learning-center-page" style="padding: 60px 20px; max-width: 900px; margin: 0 auto; color: var(--color-text);">
   <h1 style="text-align: center; margin-bottom: 20px; font-size: 3rem;">Learning Center</h1>
   
-  <div style="background: #FAFAFA; border: 1px solid var(--color-border); padding: 40px; border-radius: 4px; margin-bottom: 50px; text-align: center;">
+  <div style="background: var(--color-secondary-bg); border: 1px solid var(--color-border); padding: 40px; border-radius: 4px; margin-bottom: 50px; text-align: center;">
     <h2 style="font-size: 1.8rem; margin-bottom: 15px;">Tu cuerpo es un ecosistema inteligente</h2>
     <p style="font-size: 1.15rem; color: var(--color-text-secondary); line-height: 1.8;">
       El área vulvovaginal alberga una comunidad compleja de bacterias beneficiosas (Lactobacilos) que producen ácido láctico para mantener a raya las infecciones. Cuando usamos jabones corporales normales, duchas vaginales perfumadas o pasamos por cambios hormonales (como embarazo o menopausia), ese ecosistema se rompe.<br><br>
@@ -11,7 +11,7 @@
 
   <div class="faq-container">
     {% for block in section.blocks %}
-      <div class="faq-item" style="border: 1px solid var(--color-border); border-radius: 4px; margin-bottom: 15px; background: #FFFFFF; overflow: hidden;">
+      <div class="faq-item" style="border: 1px solid var(--color-border); border-radius: 4px; margin-bottom: 15px; background: var(--color-card-bg); overflow: hidden;">
         <button class="faq-question" style="width: 100%; text-align: left; background: none; border: none; padding: 25px; font-size: 1.2rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: var(--color-text); font-family: var(--font-body);">
           {{ block.settings.question }}
           <span class="faq-icon" style="font-size: 1.8rem; line-height: 1; transition: transform 0.3s;">+</span>

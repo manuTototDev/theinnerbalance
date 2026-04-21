@@ -6,11 +6,11 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-color: #EEEEEE;
+  background-color: var(--color-secondary-bg);
   {% if section.settings.image != blank %}
     background-image: url('{{ section.settings.image | image_url: width: 1500 }}');
   {% else %}
-    background-image: linear-gradient(#CCCCCC, #EEEEEE);
+    background-image: linear-gradient(var(--color-border), var(--color-secondary-bg));
   {% endif %}
   background-size: cover;
   background-position: center;
@@ -34,13 +34,13 @@
 
     <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
       {%- if section.settings.button_label_1 != blank -%}
-        <a href="{{ section.settings.button_link_1 }}" class="btn btn--primary" style="background-color: #333333; color: #FFFFFF; border-radius: 4px; padding: 15px 40px; font-weight: 600; text-transform: uppercase;">
+        <a href="{{ section.settings.button_link_1 }}" class="btn btn--primary" style="background-color: var(--color-button-bg); color: var(--color-card-bg); border-radius: 4px; padding: 15px 40px; font-weight: 600; text-transform: uppercase;">
           {{ section.settings.button_label_1 }}
         </a>
       {%- endif -%}
       
       {%- if section.settings.button_label_2 != blank -%}
-        <a href="{{ section.settings.button_link_2 }}" class="btn btn--outline" style="border: 2px solid #333333; color: #333333; background-color: #FFFFFF; border-radius: 4px; padding: 15px 40px; font-weight: 600; text-transform: uppercase;">
+        <a href="{{ section.settings.button_link_2 }}" class="btn btn--outline" style="border: 2px solid var(--color-button-bg); color: var(--color-button-bg); background-color: var(--color-card-bg); border-radius: 4px; padding: 15px 40px; font-weight: 600; text-transform: uppercase;">
           {{ section.settings.button_label_2 }}
         </a>
       {%- endif -%}
@@ -71,7 +71,7 @@
       "type": "color",
       "id": "text_color",
       "label": "Text Color",
-      "default": "#333333"
+      "default": "var(--color-button-bg)"
     },
     {
       "type": "text",
